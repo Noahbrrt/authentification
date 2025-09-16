@@ -1,0 +1,45 @@
+
+<html>
+  <body>
+    <h1>Connexion</h1>
+    <form id="loginForm">
+      <input name="email" type="email" placeholder="Email" required /><br>
+      <input name="password" type="password" placeholder="Mot de passe" required /><br>
+      <button>Se connecter</button>
+    </form>
+    <button id="googlelogin">Se connecter avec Google</button>
+    <p id="msg"></p>
+    <p>Pas encore de compte ? <a href="/register">S'inscrire</a></p>
+
+    <script type="module">
+      const { pb } = await import('/lib/pb.js');
+
+      const form = document.getElementById("loginForm");
+      form.onsubmit = async (e) => {
+        e.preventDefault();
+        try {
+          await pb.collection("users").authWithPassword(
+            form.email.value,
+            form.password.value
+          );
+          location.href = "/students";
+        } catch (err) {
+          document.getElementById("msg").textContent = "Échec de connexion";
+          console.error(err);
+        }
+      };
+
+const googlelogin = document.getElementById("googlelogin");
+      googlelogin.onclick = async () => {
+        try {
+          await pb.collection("users").authWithOAuth2({ provider: 'google' });
+          location.href = "/students";
+        } catch (err) {
+          document.getElementById("msg").textContent = "Échec de connexion Google";
+          console.error(err);
+        }
+      };
+
+    </script>
+  </body>
+</html>
