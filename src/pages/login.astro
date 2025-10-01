@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 1bbbbd7 (Commit initial)
 <html>
   <body>
     <h1>Connexion</h1>
@@ -11,10 +7,7 @@
       <button>Se connecter</button>
     </form>
     <button id="googlelogin">Se connecter avec Google</button>
-<<<<<<< HEAD
-=======
     <button id="githublogin">Se connecter avec GitHub</button>
->>>>>>> 1bbbbd7 (Commit initial)
     <p id="msg"></p>
     <p>Pas encore de compte ? <a href="/register">S'inscrire</a></p>
 
@@ -25,14 +18,6 @@
       form.onsubmit = async (e) => {
         e.preventDefault();
         try {
-<<<<<<< HEAD
-          await pb.collection("users").authWithPassword(
-            form.email.value,
-            form.password.value
-          );
-          location.href = "/students";
-        } catch (err) {
-=======
  await pb.collection("users").authWithPassword(
  form.email.value,
  form.password.value
@@ -47,21 +32,11 @@
  }
         
         catch (err) {
->>>>>>> 1bbbbd7 (Commit initial)
           document.getElementById("msg").textContent = "Échec de connexion";
           console.error(err);
         }
       };
 
-<<<<<<< HEAD
-const googlelogin = document.getElementById("googlelogin");
-      googlelogin.onclick = async () => {
-        try {
-          await pb.collection("users").authWithOAuth2({ provider: 'google' });
-          location.href = "/students";
-        } catch (err) {
-          document.getElementById("msg").textContent = "Échec de connexion Google";
-=======
       const googlelogin = document.getElementById("googlelogin");
  googlelogin.onclick = async () => {
  try {
@@ -83,18 +58,9 @@ const googlelogin = document.getElementById("googlelogin");
         } catch (err) {
           document.getElementById("msg").textContent =
             "Echec de connexion GitHub";
->>>>>>> 1bbbbd7 (Commit initial)
           console.error(err);
         }
       };
-
-<<<<<<< HEAD
     </script>
   </body>
 </html>
-=======
-      
-    </script>
-  </body>
-</html>
->>>>>>> 1bbbbd7 (Commit initial)
